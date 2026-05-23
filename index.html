@@ -3662,6 +3662,8 @@ html[lang="ar"] .terminal-panel * {
                 faq_desc: "Precision answers to the questions every parent asks before enrolling. Clear, direct, no fluff.",
                 faq_q1: "Does the student need to bring their own laptop?",
                 faq_a1: "No. The academy provides fully equipped workstation laptops for every single student inside the lab during sessions. Students arrive and get straight to work — no hardware prerequisites required from their side.",
+                faq_q2: "Will students receive a certificate at the end of the course?",
+                faq_a2: "Yes, students receive an official certificate from Robologic Area Academy, accredited by SPS School, documenting their project completion and the technical skills they mastered.",
                 faq_q3: "What are the age groups, and is the curriculum unified?",
                 faq_a3: "The course caters to ages 6 to 18. While all students study the same 3 core pillars — Electronics, Arduino, and Advanced Robotics — the practical projects and depth of coding logic are custom-tailored into dedicated tracks based on the student's age and level. No child is left behind, and no advanced student is held back.",
                 faq_q4: "How can we register, and what is the schedule?",
@@ -3766,7 +3768,9 @@ html[lang="ar"] .terminal-panel * {
                 faq_title: "الأسئلة الشائعة",
                 faq_desc: "إجابات دقيقة على أكثر الأسئلة شيوعاً اللي بتسألها الأهالي قبل التسجيل. واضحة ومباشرة بدون تعقيد.",
                 faq_q1: "هل الطالب محتاج يجيب لاب توب من البيت؟",
-                faq_a1: "لأ خالص. الأكاديمية بتوفر لكل طالب جهاز كمبيوتر متكامل داخل المعمل طول فترة المحاضرة. الطالب بييجي ويشتغل من أول لحظة — مفيش أي متطلبات تكنولوجية مطلوبة منه.",
+                faq_a1: "لأ خالص. الأكاديمية بتوفر لكل طالب لاب توب متكامل داخل المعمل طول فترة المحاضرة. الطالب بييجي ويشتغل من أول لحظة — مفيش أي متطلبات تكنولوجية مطلوبة منه.",
+                faq_q2: "هل يحصل الطالب على شهادة في نهاية الكورس؟",
+                faq_a2: "نعم، يحصل الطالب على شهادة رسمية من أكاديمية Robologic Area معتمدة من المدرسة، توثق إتمامه للمشاريع والمهارات التقنية التي أتقنها خلال فترة الدراسة.",
                 faq_q3: "إيه هي الفئات العمرية وهل المنهج موحد لكل الأعمار؟",
                 faq_a3: "الكورس بيستوعب الأعمار من ٦ لـ ١٨ سنة. وبرغم إن كل الطلاب بيدرسوا نفس المحاور الثلاثة الأساسية — الإلكترونيات، الأردوينو، والروبوتكس المتقدم — المشاريع العملية وعمق منطق الكود بتخصص في مسارات مخصصة بناءً على سن الطالب ومستواه. مفيش طفل بيتأخر ومفيش طالب متقدم بيتعاق.",
                 faq_q4: "إزاي نسجل وإيه هي المواعيد المتاحة؟",
@@ -4334,8 +4338,9 @@ html[lang="ar"] .terminal-panel * {
 
             const faqs = [
                 { q: t.faq_q1, a: t.faq_a1, num: "01" },
-                { q: t.faq_q3, a: t.faq_a3, num: "02" },
-                { q: t.faq_q4, a: t.faq_a4, num: "03" }
+                { q: t.faq_q2, a: t.faq_a2, num: "02" },
+                { q: t.faq_q3, a: t.faq_a3, num: "03" },
+                { q: t.faq_q4, a: t.faq_a4, num: "04" }
             ];
 
             faqList.innerHTML = faqs.map((item, i) => `

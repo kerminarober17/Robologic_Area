@@ -8,7 +8,6 @@
   <meta name="keywords" content="robotics academy assiut, robologic area, stem coding egypt, arduino kids assiut, برمجة أطفال أسيوط, روبوتكس مدرسة السلام, كورس اردوينو اسيوط" />
   <meta name="author" content="Robologic Area — El-Salam Joint Preparatory & Secondary School" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#00e5ff" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://robologicarea.com/" />
   <meta property="og:site_name" content="Robologic Area — STEM Academy" />
@@ -68,6 +67,11 @@
       color: var(--text-base);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+    }
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
     }
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; border: none; background: none; cursor: pointer; }
@@ -323,18 +327,39 @@
     .nav-cta svg { transition: transform 0.2s; }
     .nav-cta:hover svg { transform: translateX(3px); }
 
-    /* Hamburger */
     .nav-hamburger {
       display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      width: 40px;
+      height: 40px;
       padding: 10px;
       border-radius: 12px;
       border: 1px solid var(--border-soft);
       background: rgba(255,255,255,0.04);
       color: var(--text-white);
       transition: background 0.2s;
+      position: relative;
+      cursor: pointer;
     }
     .nav-hamburger:hover { background: rgba(255,255,255,0.08); }
-    .nav-hamburger svg { display: block; }
+    .nav-hamburger span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: all 0.3s ease-in-out;
+      position: absolute;
+    }
+    .nav-hamburger span:nth-child(1) { transform: translateY(-6px); }
+    .nav-hamburger span:nth-child(2) { transform: translateY(0); opacity: 1; }
+    .nav-hamburger span:nth-child(3) { transform: translateY(6px); }
+    .nav-hamburger.active span:nth-child(1) { transform: translateY(0) rotate(45deg); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
+    .nav-hamburger.active span:nth-child(3) { transform: translateY(0) rotate(-45deg); }
 
     /* Mobile menu */
     .mobile-menu {
@@ -2488,10 +2513,10 @@
     </div>
   </div>
 
-  <!-- Hamburger -->
   <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
-    <svg id="hamburger-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    <svg id="close-icon" class="hidden-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <span></span>
+    <span></span>
+    <span></span>
   </button>
 
   <!-- Mobile menu -->
@@ -2530,7 +2555,7 @@
 ============================================================ -->
 <section id="home">
   <div class="hero-video-wrap">
-    <video autoplay loop muted webkit-playsinline playsinline preload="none">
+    <video autoplay loop muted webkit-playsinline preload="none">
       <source src="https://res.cloudinary.com/dunyarnb3/video/upload/v1779434289/Robologic_Area_BG_xnbfaw.mp4" type="video/mp4" />
     </video>
     <div class="hero-grad-lr"></div>
@@ -2566,7 +2591,7 @@
         <div class="hero-cta-row reveal reveal-delay-3">
           <button class="btn-primary" onclick="scrollToSection('curriculum')">
             <span data-i18n="btn_explore">Explore Modules</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg width="14" height="14" viewBox="0 l="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </button>
           <button class="btn-ghost" onclick="scrollToSection('contact')" data-i18n="btn_hotline">
             Connect Hotline
@@ -3726,22 +3751,18 @@ let PROJECTS = PROJECTS_EN;
   ============================================================ */
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobile-menu");
-  const hamburgerIcon = document.getElementById("hamburger-icon");
-  const closeIcon = document.getElementById("close-icon");
   let menuOpen = false;
 
   hamburger.addEventListener("click", () => {
     menuOpen = !menuOpen;
     mobileMenu.classList.toggle("open", menuOpen);
-    hamburgerIcon.style.display = menuOpen ? "none" : "block";
-    closeIcon.style.display = menuOpen ? "block" : "none";
+    hamburger.classList.toggle("active", menuOpen);
   });
 
   function closeMobileMenu() {
     menuOpen = false;
     mobileMenu.classList.remove("open");
-    hamburgerIcon.style.display = "block";
-    closeIcon.style.display = "none";
+    hamburger.classList.remove("active");
   }
 
   /* ============================================================
